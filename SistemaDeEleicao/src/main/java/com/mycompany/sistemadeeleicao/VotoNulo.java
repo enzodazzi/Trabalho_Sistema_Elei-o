@@ -9,7 +9,7 @@ package com.mycompany.sistemadeeleicao;
  * @author enzod
  */
 public class VotoNulo implements Votavel {
-    private int qtdvotos;
+    private int qtdvotos = 0;
     
     public void receberVoto(){
         qtdvotos += 1;

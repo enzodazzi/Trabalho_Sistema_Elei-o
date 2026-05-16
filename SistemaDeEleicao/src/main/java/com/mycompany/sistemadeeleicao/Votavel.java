@@ -10,11 +10,10 @@ package com.mycompany.sistemadeeleicao;
  */
 public interface Votavel {
 
-    public void receberVoto (){
+    public void receberVoto ();  
+    
+    public int getQtdVotos ();
         
-    }
-    public int getQtdVotos (){
-        
-    }
+    
     
 }

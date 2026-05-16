@@ -10,12 +10,29 @@ package com.mycompany.sistemadeeleicao;
  */
 public class Candidato extends Usuario implements Votavel{
     private int nCandidato;
-    private int qtdVotos;
+    private int qtdVotos = 0;
+
+    public int getnCandidato() {
+        return nCandidato;
+    }
+
+    public int getQtdVotos (){
+        return qtdVotos;
+    }
+
+    public String getNome() {
+        return nome;
+    }
+    
+    
+    
+    public void setnCandidato(int nCandidato) {
+        this.nCandidato = nCandidato;
+    }
+    
     
     public void receberVoto(){
         qtdVotos += 1;
     }
-    public int getQtdVotos (){
-        return qtdVotos;
-    }
+    
 }
