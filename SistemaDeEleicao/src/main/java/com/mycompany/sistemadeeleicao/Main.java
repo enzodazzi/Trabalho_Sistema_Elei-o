@@ -89,7 +89,7 @@ public class Main {
                                 if(Verificador.verificarNull(sistema.getEleicao(),"Nenhuma eleição criada.")) {
                                     
                                     boolean votar = usuario.votar(sistema);
-                                    if(!votar)System.out.println("eleição indisponivel para essse usario");
+                                    if(!votar)System.out.println("eleição indisponivel");
                                 }
                             }
                                 

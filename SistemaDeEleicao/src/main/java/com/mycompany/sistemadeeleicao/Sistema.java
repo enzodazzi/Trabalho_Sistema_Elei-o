@@ -40,7 +40,7 @@ public class Sistema {
         if(tipo == 1) {
 
             Usuario usuario = new Usuario();
-            if(!usuario.validarCpf(cpf)) {
+            if(!usuario.validarCpf(cpf, usuarios)) {
 
                 System.out.println("Cpf invalido");
                 return;
@@ -86,7 +86,7 @@ public class Sistema {
 
             Usuario novoAdm = new Administrador();
             
-            if(!novoAdm.validarCpf(cpf)) {
+            if(!novoAdm.validarCpf(cpf,usuarios)) {
 
                 System.out.println("Cpf invalido");
                 return;
@@ -152,9 +152,7 @@ public class Sistema {
 
         urnas = new ArrayList<>();
 
-        eleicao = new Eleicao(
-            "Eleição Principal"
-        );
+        eleicao = null;
 
         criarPrimeiroAdm();
 

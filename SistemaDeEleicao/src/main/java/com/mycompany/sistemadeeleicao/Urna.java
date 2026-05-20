@@ -26,8 +26,10 @@ public class Urna {
 
     
     
-    public void registrarVoto (Eleicao eleicao){
+    public boolean registrarVoto (Eleicao eleicao){
        Scanner scan = new Scanner(System.in);
+       int tentativasRestantes = tentativasInvalidas;
+       
        while(!bloqueada){
             
 
@@ -42,7 +44,7 @@ public class Urna {
                 eleicao.getVotoBranco().receberVoto();
 
                 System.out.println("Voto branco registrado.");
-                return;
+                return true;
             }
 
             else if(numero == 2) {
@@ -50,7 +52,7 @@ public class Urna {
                 eleicao.getVotoNulo().receberVoto();
 
                 System.out.println("Voto nulo registrado.");
-                return;
+                return true;
             }
 
             else {
@@ -61,32 +63,29 @@ public class Urna {
 
                     candidato.receberVoto();
 
-                    System.out.println(
-                        "Voto registrado para "
-                        + candidato.getNome()
-                    );
-                    return;
+                    System.out.println("Voto registrado para " + candidato.getNome());
+                    return true;
+                    
                 }
 
                 else {
 
-                    tentativasInvalidas -= 1;
+                    tentativasRestantes -= 1;
 
                     System.out.println("Número inválido.");
 
-                    if(tentativasInvalidas <= 0) {
+                    if(tentativasRestantes <= 0) {
 
                         bloquearUrna();
 
-                        System.out.println(
-                           "Urna bloqueada por suspeita de fraude."
-                        );
+                        System.out.println( "Urna bloqueada por suspeita de fraude." );
+                        return false;
                     
                     }
                 }
             }
         }
-       
+       return false;
     }
     
     public void bloquearUrna (){

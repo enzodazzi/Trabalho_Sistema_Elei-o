@@ -64,7 +64,7 @@ public class Eleicao {
 
         votoNulo = new VotoNulo();
 
-        System.out.println("Eleição encerrada.");
+        
     }
     
     
@@ -102,7 +102,7 @@ public class Eleicao {
         System.out.println("\n===== RESULTADO DA ELEIÇÃO =====");
 
         int maiorQuantidade = candidatos.get(0).getQtdVotos();
-        Candidato vencedor = null;
+        Candidato vencedor = candidatos.get(0);
 
         for(Candidato c : candidatos) {
 
@@ -145,6 +145,6 @@ public class Eleicao {
             System.out.println("\nNenhum vencedor.");
         }
         
-        this.finalizarEleicao();
+        
     }
 }

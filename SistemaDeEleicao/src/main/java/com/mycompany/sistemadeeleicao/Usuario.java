@@ -3,6 +3,7 @@
  * Click nbfs://nbhost/SystemFileSystem/Templates/Classes/Class.java to edit this template
  */
 package com.mycompany.sistemadeeleicao;
+import java.util.ArrayList;
 
 /**
  *
@@ -55,7 +56,9 @@ public class Usuario {
 
             if(!urna.isBloqueada()) {
 
-                urna.registrarVoto(sistema.getEleicao());
+                boolean sucesso = urna.registrarVoto(sistema.getEleicao());
+                
+                if(!sucesso)return false;
 
                 jaVotou = true;
 
@@ -101,28 +104,54 @@ public class Usuario {
         return true;
     }
     
-    public boolean validarCpf(String cpf) {
+    public boolean validarCpf(String cpf,ArrayList<Usuario> usuarios) {
 
-        cpf = cpf.replace(".", "").replace("-", "");
-        
-        if(cpf.length() != 11) return false;
-    
-        boolean todosIguais = true;
-        char c = cpf.charAt(0);
-        if(!Character.isDigit(c)) return false;
+    cpf = cpf.replace(".", "").replace("-", "");
 
-        for(int i = 1; i < cpf.length(); i++) {
+    if(cpf.length() != 11) {
+        return false;
+    }
 
-            c = cpf.charAt(i);
+    boolean todosIguais = true;
 
-            if(!Character.isDigit(c)) return false;
-            if(cpf.charAt(i) != cpf.charAt(0)) todosIguais = false;  
+    char c = cpf.charAt(0);
+
+    if(!Character.isDigit(c)) {
+        return false;
+    }
+
+    for(int i = 1; i < cpf.length(); i++) {
+
+        c = cpf.charAt(i);
+
+        if(!Character.isDigit(c)) {
+            return false;
         }
 
-        if(todosIguais) return false;
-        
-        return true;
+        if(cpf.charAt(i) != cpf.charAt(0)) {
+
+            todosIguais = false;
+        }
     }
+
+    if(todosIguais) {
+        return false;
+    }
+
+
+
+    for(Usuario u : usuarios) {
+
+        if(u.getCpf().equals(cpf)) {
+
+            System.out.println("CPF já cadastrado.");
+
+            return false;
+        }
+    }
+
+    return true;
+}
     
     public void candidatarSe(Eleicao eleicao, int numeroCandidato) {
 
