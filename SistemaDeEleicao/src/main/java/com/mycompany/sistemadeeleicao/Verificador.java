@@ -75,9 +75,7 @@ public class Verificador {
 
             if(obj == null) {
 
-                throw new NullPointerException(
-                    mensagem
-                );
+                throw new NullPointerException(mensagem);
             }
 
             return true;
